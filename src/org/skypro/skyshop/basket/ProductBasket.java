@@ -36,10 +36,15 @@ public class ProductBasket {
             System.out.println("В корзине пусто");
             return;
         }
+        int n = 0;
         for (int i=0; i<size; i++) {
             System.out.println(products[i]);
+            if (products[i].isSpecial()) {
+                n++;
+            }
         }
         System.out.println("Итого: "+ countPriceBasket() +" р.");
+        System.out.println("Специальных товаров: "+ n);
     }
 
     public boolean findProduct (String product) {

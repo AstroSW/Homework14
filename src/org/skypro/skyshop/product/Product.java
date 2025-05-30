@@ -2,27 +2,20 @@ package org.skypro.skyshop.product;
 
 import java.util.Objects;
 
-public class Product {
+public abstract class Product {
     private final String productName;
-    private int price;
 
-    public Product(String productName, int price) {
+    public Product(String productName) {
         this.productName = productName;
-        this.price = price;
     }
 
     public String getProductName() {
         return productName;
     }
 
-    public int getPrice() {
-        return price;
-    }
+    public abstract int getPrice();
 
-    @Override
-    public String toString() {
-        return productName + ": " + price +" р.";
-    }
+    public abstract boolean isSpecial ();
 
     @Override
     public boolean equals(Object o) {
