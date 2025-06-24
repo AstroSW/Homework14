@@ -52,7 +52,7 @@ public class ProductBasket {
             return false;
         }
         for (int i = 0; i < size; i++) {
-            if (product.equals(products[i].getProductName())) {
+            if (product.equals(products[i].getName())) {
                 return true;
             }
         }
