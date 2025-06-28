@@ -8,6 +8,7 @@ public abstract class Product implements Searchable {
     private final String productName;
 
     public Product(String productName) {
+        if (productName.isBlank()) {throw new IllegalArgumentException("Название продукта отсутствует");}
         this.productName = productName;
     }
 
@@ -40,4 +41,6 @@ public abstract class Product implements Searchable {
     public String getTypeContent() {
         return "PRODUCT";
     }
+
+
 }

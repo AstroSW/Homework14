@@ -1,35 +1,18 @@
 package org.skypro.skyshop;
 
 import org.skypro.skyshop.Article.Article;
+import org.skypro.skyshop.Search.BestResultNotFound;
 import org.skypro.skyshop.Search.SearchEngine;
+import org.skypro.skyshop.Search.Searchable;
 import org.skypro.skyshop.basket.ProductBasket;
 import org.skypro.skyshop.product.DiscountedProduct;
 import org.skypro.skyshop.product.FixPriceProduct;
+import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.product.SimpleProduct;
 
 public class App {
     public static void main(String[] args) {
-
-        ProductBasket productBasket = new ProductBasket();
-        productBasket.addProduct(new SimpleProduct("Бананы", 170));
-        productBasket.addProduct(new DiscountedProduct("Яблоки", 105, 10));
-        productBasket.addProduct(new FixPriceProduct("Апельсины"));
-        productBasket.addProduct(new SimpleProduct("Хлеб", 18));
-        productBasket.addProduct(new DiscountedProduct("Шоколад", 90, 35));
-
         System.out.println();
-        productBasket.addProduct(new SimpleProduct("Пельмени", 248));
-        productBasket.printBasket();
-        System.out.println();
-        System.out.println("Стоимость корзины: "+ productBasket.countPriceBasket() +" р." );
-        System.out.println();
-        System.out.println("Хлеб "+ productBasket.findProduct("Хлеб"));
-        System.out.println("Пельмени "+ productBasket.findProduct("Пельмени"));
-
-        productBasket.emptyBasket();
-        productBasket.printBasket();
-        System.out.println("Стоимость корзины: "+ productBasket.countPriceBasket() +" р." );
-        System.out.println("Хлеб "+ productBasket.findProduct("Хлеб"));
 
         SearchEngine searchEngine = new SearchEngine(10);
         searchEngine.addInfo(new SimpleProduct("iPhone 16", 20999));
@@ -45,7 +28,41 @@ public class App {
         searchEngine.addInfo(new Article("Смартфон HONOR", "Оптическая стабилизация позволяет получать четкое изображение в движении или при недостаточном освещении, обеспечивая непревзойденное качество фото и видео. Два динамика и режим увеличения громкости на 300% создают объемное и насыщенное звучание. "));
 
         searchEngine.searchInfo("Samsung");
-        searchEngine.searchInfo("емкий аккумулятор");
-        searchEngine.searchInfo("Смартфон");
+        //searchEngine.searchInfo("емкий аккумулятор");
+        //searchEngine.searchInfo("Смартфон");
+        //check(searchEngine.addInfo(new SimpleProduct(" ", 13000)));
+
+        System.out.println();
+        try {
+            searchEngine.addInfo(new SimpleProduct(" ", 13000));
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            searchEngine.addInfo(new DiscountedProduct("Infinity", 13000, 105));
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            searchEngine.addInfo(new DiscountedProduct("Infinity", 0, 10));
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println();
+        try {
+            System.out.println(searchEngine.bestSearchEngine("POCO"));
+        } catch (BestResultNotFound e) {
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println();
+        try {
+            System.out.println(searchEngine.bestSearchEngine("камера"));
+        } catch (BestResultNotFound e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

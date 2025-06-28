@@ -6,7 +6,9 @@ public class DiscountedProduct extends Product {
 
     public DiscountedProduct(String productName, int price, int discount) {
         super(productName);
+        if (price <= 0) throw new IllegalArgumentException("Цена отсутствует");
         this.price = price;
+        if (discount < 0 | discount > 100) throw new IllegalArgumentException("Неверный диапазон скидки");
         this.discount = discount;
     }
 
