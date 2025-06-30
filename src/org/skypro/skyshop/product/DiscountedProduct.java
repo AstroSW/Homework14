@@ -14,7 +14,7 @@ public class DiscountedProduct extends Product {
 
     @Override
     public String toString() {
-        return getName() + ": "+ getPrice() +" р. ("+ discount +" %)";
+        return getName() + ": " + getPrice() + " р. (" + discount + " %)";
     }
 
     @Override
@@ -22,7 +22,7 @@ public class DiscountedProduct extends Product {
         return price - price * discount / 100;
     }
 
-     @Override
+    @Override
     public boolean isSpecial() {
         return true;
     }

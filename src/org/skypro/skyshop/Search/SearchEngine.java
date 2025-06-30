@@ -1,53 +1,58 @@
 package org.skypro.skyshop.Search;
 
-public class SearchEngine {
-    Searchable [] searchables;
-    int count;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
-    public SearchEngine (int size) {
-        searchables = new Searchable [size];
+public class SearchEngine {
+    List<Searchable> searchables;
+    //int count;
+
+    public SearchEngine() {
+        searchables = new ArrayList<>();
     }
 
-    public void searchInfo (String term) {
-        Searchable[] info = new Searchable[5];
-        int count = 0;
+    public void searchInfo(String term) {
+        List<Searchable> info = new ArrayList<>();
+        //int count = 0;
         for (Searchable s : searchables) {
-            if (s == null) {continue;}
+            //if (s == null) {
+            //    continue;
+            //}
             if (s.getSearchTerm().contains(term)) {
-                info [count++] = s;
-            }
-            if (count == 5) {
-                break;
+                info.add(s);
             }
         }
         System.out.println();
-        for (int i=0; i < count; i++) {
-            System.out.println(info[i].getStringRepresentation());
+        for (Searchable s : info) {
+            System.out.println(s.getStringRepresentation());
         }
     }
 
-    public void addInfo (Searchable searchable) {
-        searchables [count++] = searchable;
+    public void addInfo(Searchable searchable) {
+        searchables.add(searchable);
     }
 
-    public Searchable bestSearchEngine (String search) {
+    public Searchable bestSearchEngine(String search) {
         int maxCount = 0;
         Searchable bestResult = null;
-        for (Searchable searchable: searchables) {
-            if (searchable == null) {continue;}
+        for (Searchable searchable : searchables) {
+            if (searchable == null) {
+                continue;
+            }
             int n = 0;
             String term = searchable.getSearchTerm();
             int index = term.indexOf(search);
             while (index != -1) {
                 n++;
-                index = term.indexOf (search, index + search.length());
+                index = term.indexOf(search, index + search.length());
             }
             if (n > maxCount) {
                 maxCount = n;
                 bestResult = searchable;
             }
         }
-        if (bestResult == null) throw new BestResultNotFound("Поисковая строка '"+ search +"' отсутствует.");
+        if (bestResult == null) throw new BestResultNotFound("Поисковая строка '" + search + "' отсутствует.");
         return bestResult;
     }
 }

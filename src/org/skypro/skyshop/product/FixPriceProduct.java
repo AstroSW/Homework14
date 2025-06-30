@@ -1,6 +1,6 @@
 package org.skypro.skyshop.product;
 
-public class  FixPriceProduct extends Product {
+public class FixPriceProduct extends Product {
     private static final int price = 10000;
 
     public FixPriceProduct(String productName) {
@@ -9,7 +9,7 @@ public class  FixPriceProduct extends Product {
 
     @Override
     public String toString() {
-        return getName() + ": фиксированная цена " + price +" р.";
+        return getName() + ": фиксированная цена " + price + " р.";
     }
 
     @Override
