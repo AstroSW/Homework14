@@ -1,12 +1,10 @@
 package org.skypro.skyshop.Search;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class SearchEngine {
     List<Searchable> searchables;
-    //int count;
 
     public SearchEngine() {
         searchables = new ArrayList<>();
@@ -14,11 +12,7 @@ public class SearchEngine {
 
     public void searchInfo(String term) {
         List<Searchable> info = new ArrayList<>();
-        //int count = 0;
         for (Searchable s : searchables) {
-            //if (s == null) {
-            //    continue;
-            //}
             if (s.getSearchTerm().contains(term)) {
                 info.add(s);
             }
