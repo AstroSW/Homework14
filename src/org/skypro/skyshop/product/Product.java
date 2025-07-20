@@ -8,7 +8,9 @@ public abstract class Product implements Searchable {
     private final String productName;
 
     public Product(String productName) {
-        if (productName.isBlank()) {throw new IllegalArgumentException("Название продукта отсутствует");}
+        if (productName.isBlank()) {
+            throw new IllegalArgumentException("Название продукта отсутствует");
+        }
         this.productName = productName;
     }
 
@@ -18,7 +20,7 @@ public abstract class Product implements Searchable {
 
     public abstract int getPrice();
 
-    public abstract boolean isSpecial ();
+    public abstract boolean isSpecial();
 
     @Override
     public boolean equals(Object o) {
