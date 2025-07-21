@@ -10,6 +10,7 @@ import org.skypro.skyshop.product.FixPriceProduct;
 import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.product.SimpleProduct;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -27,15 +28,17 @@ public class App {
 
         productBasket.printBasket();
         System.out.println();
-        List<Product> removeProducts = new LinkedList<>();
+        List<Product> removeProducts = new ArrayList<>();
+        System.out.println("Список удалённых продуктов:");
         removeProducts.addAll(productBasket.deleteProduct("Яблоки"));
-        productBasket.printDeleteProducts(removeProducts);
+        productBasket.printProducts(removeProducts);
+
         productBasket.printBasket();
         System.out.println();
         removeProducts.clear();
+        System.out.println("Список удалённых продуктов:");
         removeProducts.addAll(productBasket.deleteProduct("Арбуз"));
-        productBasket.printDeleteProducts(removeProducts);
-        productBasket.printBasket();
+        productBasket.printProducts(removeProducts);
 
         SearchEngine searchEngine = new SearchEngine();
         searchEngine.addInfo(new SimpleProduct("iPhone 16", 20999));
@@ -50,9 +53,12 @@ public class App {
         searchEngine.addInfo(new Article("Смартфон POCO", "Смартфон имеет емкий аккумулятор на 6000 мАч, что обеспечивает длительное время работы без подзарядки. POCO X7 Pro также поддерживает быструю зарядку мощностью 90 Вт, что позволяет быстро восстановить заряд батареи. "));
         searchEngine.addInfo(new Article("Смартфон HONOR", "Оптическая стабилизация позволяет получать четкое изображение в движении или при недостаточном освещении, обеспечивая непревзойденное качество фото и видео. Два динамика и режим увеличения громкости на 300% создают объемное и насыщенное звучание. "));
 
-        searchEngine.searchInfo("Samsung");
-        searchEngine.searchInfo("емкий аккумулятор");
-        searchEngine.searchInfo("Смартфон");
+        System.out.println();
+        searchEngine.printInfo(searchEngine.searchInfo("Samsung"));
+        System.out.println();
+        searchEngine.printInfo(searchEngine.searchInfo("емкий аккумулятор"));
+        System.out.println();
+        searchEngine.printInfo(searchEngine.searchInfo("Смартфон"));
 
         System.out.println();
         try {
