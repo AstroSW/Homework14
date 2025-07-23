@@ -12,11 +12,7 @@ public class ProductBasket {
     }
 
     public void addProduct(Product newproduct) {
-        products.computeIfAbsent(newproduct.getName(),k -> new ArrayList<>()).add(newproduct);
-        //if (!products.containsKey(newproduct.getName())) {
-        //    products.put(newproduct.getName(), new ArrayList<>());
-        //}
-        //products.get(newproduct.getName()).add(newproduct);
+        products.computeIfAbsent(newproduct.getName(), k -> new ArrayList<>()).add(newproduct);
     }
 
     public int countPriceBasket() {
