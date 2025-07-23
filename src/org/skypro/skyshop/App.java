@@ -53,12 +53,13 @@ public class App {
         searchEngine.addInfo(new Article("Смартфон POCO", "Смартфон имеет емкий аккумулятор на 6000 мАч, что обеспечивает длительное время работы без подзарядки. POCO X7 Pro также поддерживает быструю зарядку мощностью 90 Вт, что позволяет быстро восстановить заряд батареи. "));
         searchEngine.addInfo(new Article("Смартфон HONOR", "Оптическая стабилизация позволяет получать четкое изображение в движении или при недостаточном освещении, обеспечивая непревзойденное качество фото и видео. Два динамика и режим увеличения громкости на 300% создают объемное и насыщенное звучание. "));
 
+
         System.out.println();
-        searchEngine.printInfo(searchEngine.searchInfo("Samsung"));
+        searchEngine.searchInfo("Samsung").forEach((a, b) -> System.out.println(a + ": " + b));
         System.out.println();
-        searchEngine.printInfo(searchEngine.searchInfo("емкий аккумулятор"));
+        searchEngine.searchInfo("емкий аккумулятор").forEach((a, b) -> System.out.println(a + ": " + b));
         System.out.println();
-        searchEngine.printInfo(searchEngine.searchInfo("Смартфон"));
+        searchEngine.searchInfo("Смартфон").forEach((a, b) -> System.out.println(a + ": " + b));
 
         System.out.println();
         try {

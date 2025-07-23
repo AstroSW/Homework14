@@ -13,7 +13,7 @@ public class SearchEngine {
     }
 
     public Map<String, Searchable> searchInfo(String term) {
-        Map<String, Searchable> info = new TreeMap();
+        Map<String, Searchable> info = new TreeMap<>();
         for (Searchable s : searchables) {
             if (s.getSearchTerm().contains(term)) {
                 info.put(s.getName(), s);
@@ -47,11 +47,5 @@ public class SearchEngine {
         }
         if (bestResult == null) throw new BestResultNotFound("Поисковая строка '" + search + "' отсутствует.");
         return bestResult;
-    }
-
-    public void printInfo(Map<String, Searchable> map) {
-        for (Map.Entry m : map.entrySet()) {
-            System.out.println(m.getKey() + " : " + m.getValue());
-        }
     }
 }

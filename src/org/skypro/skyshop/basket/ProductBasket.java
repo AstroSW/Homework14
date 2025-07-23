@@ -5,17 +5,18 @@ import org.skypro.skyshop.product.Product;
 import java.util.*;
 
 public class ProductBasket {
-    private final Map<String, ArrayList<Product>> products;
+    private final Map<String, List<Product>> products;
 
     public ProductBasket() {
         products = new HashMap<>();
     }
 
     public void addProduct(Product newproduct) {
-        if (!products.containsKey(newproduct.getName())) {
-            products.put(newproduct.getName(), new ArrayList<>());
-        }
-        products.get(newproduct.getName()).add(newproduct);
+        products.computeIfAbsent(newproduct.getName(),k -> new ArrayList<>()).add(newproduct);
+        //if (!products.containsKey(newproduct.getName())) {
+        //    products.put(newproduct.getName(), new ArrayList<>());
+        //}
+        //products.get(newproduct.getName()).add(newproduct);
     }
 
     public int countPriceBasket() {
