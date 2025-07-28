@@ -3,7 +3,6 @@ package org.skypro.skyshop;
 import org.skypro.skyshop.Article.Article;
 import org.skypro.skyshop.Search.BestResultNotFound;
 import org.skypro.skyshop.Search.SearchEngine;
-import org.skypro.skyshop.Search.Searchable;
 import org.skypro.skyshop.basket.ProductBasket;
 import org.skypro.skyshop.product.DiscountedProduct;
 import org.skypro.skyshop.product.FixPriceProduct;
@@ -11,12 +10,10 @@ import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.product.SimpleProduct;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class App {
     public static void main(String[] args) {
-        System.out.println();
 
         ProductBasket productBasket = new ProductBasket();
         productBasket.addProduct(new SimpleProduct("Бананы", 170));
@@ -54,11 +51,11 @@ public class App {
         searchEngine.addInfo(new Article("Смартфон HONOR", "Оптическая стабилизация позволяет получать четкое изображение в движении или при недостаточном освещении, обеспечивая непревзойденное качество фото и видео. Два динамика и режим увеличения громкости на 300% создают объемное и насыщенное звучание. "));
 
         System.out.println();
-        searchEngine.searchInfo("Samsung").forEach(a -> System.out.println(a));
+        searchEngine.searchInfo("Samsung").forEach(System.out::println);
         System.out.println();
-        searchEngine.searchInfo("емкий аккумулятор").forEach(a -> System.out.println(a));
+        searchEngine.searchInfo("емкий аккумулятор").forEach(System.out::println);
         System.out.println();
-        searchEngine.searchInfo("Смартфон").forEach(a -> System.out.println(a));
+        searchEngine.searchInfo("Смартфон").forEach(System.out::println);
 
         System.out.println();
         try {
